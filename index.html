@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pasta Madre — Pizzeria Napoletana a Fagnano Olona</title>
+<meta name="description" content="Pasta Madre, pizzeria napoletana a Fagnano Olona. Impasto a lunga lievitazione con lievito madre, ingredienti DOP, pizze classiche, gourmet e fritte.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 fill=%22%230c0a08%22/><text x=%2250%22 y=%2268%22 font-family=%22Georgia,serif%22 font-style=%22italic%22 font-size=%2260%22 fill=%22%23c9a24e%22 text-anchor=%22middle%22>P</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0a08;
+    --bg-panel:#141110;
+    --bg-panel-2:#17130f;
+    --gold:#c9a24e;
+    --gold-light:#e3c688;
+    --gold-dim:#7d652f;
+    --line: rgba(201,162,78,0.28);
+    --cream:#ece6d8;
+    --muted:#9c9488;
+    --maxw:1120px;
+    --serif:'Playfair Display', 'Georgia', serif;
+    --sans:'Poppins', sans-serif;
+    --script:'Dancing Script', cursive;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth; scroll-padding-top:92px;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--gold-dim); color:#fff;}
+  :focus-visible{outline:2px solid var(--gold-light); outline-offset:3px;}
+  body::before{
+    content:''; position:fixed; inset:0; z-index:300; pointer-events:none;
+    opacity:0.045; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- scroll reveal ---------- */
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  .wrap{width:100%; max-width:var(--maxw); margin:0 auto; padding:0 28px;}
+  .eyebrow-off{display:none;} /* placeholder unused */
+
+  h1,h2,h3{font-family:var(--serif); font-weight:600; font-style:italic; color:var(--gold-light); line-height:1.08;}
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:var(--sans); font-size:0.82rem; font-weight:500; letter-spacing:0.06em;
+    padding:15px 30px; border-radius:2px; cursor:pointer;
+    border:1px solid var(--gold-dim); transition:background .25s, color .25s, border-color .25s, transform .2s;
+  }
+  .btn:hover{ transform:translateY(-2px); }
+  .btn-solid{ background:var(--gold); color:#1a1509; border-color:var(--gold); }
+  .btn-solid:hover{ background:var(--gold-light); }
+  .btn-outline{ color:var(--cream); }
+  .btn-outline:hover{ border-color:var(--gold-light); color:var(--gold-light); }
+
+  /* ---------- header ---------- */
+  .site-header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    background:rgba(10,8,7,0.97);
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .site-header .wrap{ display:flex; align-items:center; justify-content:flex-start; gap:40px; height:78px; }
+  .logo-mark{ font-family:var(--script); font-weight:700; font-style:normal; font-size:2.3rem; color:var(--gold); }
+  .main-nav{ display:flex; align-items:center; gap:26px; margin-left:auto; }
+  .main-nav a{ font-size:0.82rem; letter-spacing:0.04em; color:var(--cream); opacity:0.85; transition:opacity .2s, color .2s; }
+  .main-nav a:hover{ opacity:1; color:var(--gold-light); }
+  .nav-cta{
+    font-family:var(--serif); font-style:italic; font-weight:600; opacity:1 !important;
+    color:var(--gold) !important; border:1px solid var(--gold-dim); border-radius:20px;
+    padding:7px 18px !important; margin-left:0;
+    animation:navCtaPulse 2.6s ease-in-out infinite;
+  }
+  .nav-cta:hover{ background:rgba(201,162,78,0.12); border-color:var(--gold-light); color:var(--gold-light) !important; }
+  @keyframes navCtaPulse{
+    0%, 100%{ box-shadow:0 0 0 0 rgba(201,162,78,0.35); }
+    50%{ box-shadow:0 0 0 6px rgba(201,162,78,0); }
+  }
+  .header-actions{ display:flex; align-items:center; gap:12px; }
+  .icon-link{ display:flex; align-items:center; justify-content:center; width:36px; height:36px; border:1px solid var(--line); border-radius:50%; color:var(--gold-light); transition:border-color .2s, background .2s; }
+  .icon-link:hover{ border-color:var(--gold-light); background:rgba(201,162,78,0.08); }
+  .phone-chip{ display:flex; align-items:center; gap:8px; font-size:0.85rem; color:var(--cream); }
+  .nav-toggle{ display:none; background:none; border:none; color:var(--gold-light); width:36px; height:36px; }
+  .nav-toggle svg{ width:24px; height:24px; }
+
+  @media (max-width:880px){
+    .main-nav{
+      position:fixed; inset:78px 0 0 0; z-index:100;
+      background-color:#050403;
+      box-shadow:0 20px 40px rgba(0,0,0,0.5);
+      flex-direction:column; justify-content:flex-start; align-items:flex-start; gap:0;
+      padding:20px 28px; transform:translateX(100%); transition:transform .3s ease;
+    }
+    .main-nav.open{ transform:translateX(0); }
+    .main-nav a{ width:100%; padding:16px 0; border-bottom:1px solid rgba(255,255,255,0.06); font-size:1rem; }
+    .header-actions .phone-chip{ display:none; }
+    .nav-toggle{ display:flex; align-items:center; justify-content:center; }
+    .logo-mark{ font-size:1.6rem; }
+    .nav-cta{ font-size:0.85rem; padding:5px 13px !important; }
+    .header-actions{ gap:10px; margin-left:auto; }
+    .icon-link{ width:32px; height:32px; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    min-height:100vh; display:flex; align-items:center; justify-content:center;
+    padding:150px 20px 80px; position:relative; overflow:hidden;
+    background:var(--bg);
+  }
+  .hero-bg{
+    position:absolute; inset:0; z-index:0;
+    display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+  }
+  .hero-bg img{
+    width:100%; height:100%; object-fit:cover;
+    filter:grayscale(0.55) brightness(0.34) saturate(1.2);
+    opacity:0.9; transform:scale(1.08);
+    animation:heroBgZoom 26s ease-in-out infinite alternate;
+  }
+  .hero-bg img:nth-child(2){ animation-delay:-6s; }
+  .hero-bg img:nth-child(3){ animation-delay:-13s; }
+  .hero-bg img:nth-child(4){ animation-delay:-19s; }
+  @keyframes heroBgZoom{ from{ transform:scale(1.08);} to{ transform:scale(1.18);} }
+  .hero::after{
+    content:''; position:absolute; inset:0; z-index:1;
+    background:
+      radial-gradient(ellipse at 50% 42%, rgba(12,10,8,0.35) 0%, rgba(12,10,8,0.86) 58%, var(--bg) 100%),
+      linear-gradient(180deg, rgba(12,10,8,0.5) 0%, transparent 20%, transparent 75%, var(--bg) 100%);
+  }
+  .hero-frame{
+    position:relative; z-index:2; width:100%; max-width:760px; padding:90px 40px;
+    text-align:center; opacity:0; animation:frameIn 1s ease forwards .15s;
+  }
+  @keyframes frameIn{ from{ opacity:0; transform:translateY(14px);} to{ opacity:1; transform:translateY(0);} }
+  .corner{ position:absolute; width:46px; height:46px; border-color:var(--gold-dim); }
+  .corner.tl{ top:0; left:0; border-top:1.5px solid; border-left:1.5px solid; }
+  .corner.tr{ top:0; right:0; border-top:1.5px solid; border-right:1.5px solid; }
+  .corner.bl{ bottom:0; left:0; border-bottom:1.5px solid; border-left:1.5px solid; }
+  .corner.br{ bottom:0; right:0; border-bottom:1.5px solid; border-right:1.5px solid; }
+
+  .hero-title{ font-family:var(--script); font-weight:700; font-style:normal; color:var(--gold); font-size:clamp(2.1rem, 10.5vw, 6.5rem); margin-bottom:26px; text-shadow:0 8px 50px rgba(0,0,0,0.6); white-space:nowrap; }
+  .hero-divider{ width:64px; height:1px; background:var(--gold-dim); margin:0 auto 26px; }
+  .hero-sub{ font-family:var(--sans); font-size:0.95rem; letter-spacing:0.42em; color:var(--cream); font-weight:400; margin-bottom:38px; }
+  .hero-tagline{ font-family:var(--serif); font-style:italic; font-size:1.15rem; color:var(--muted); max-width:480px; margin:0 auto 42px; }
+  .hero-cta{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+  .scroll-cue{
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    font-size:0.65rem; letter-spacing:0.2em; color:var(--muted);
+  }
+  .scroll-cue::after{ content:''; width:1px; height:34px; background:var(--gold-dim); }
+
+  @media (max-width:600px){
+    .hero-frame{ padding:60px 20px; }
+    .corner{ width:24px; height:24px; }
+    .hero-sub{ letter-spacing:0.28em; font-size:0.8rem; }
+  }
+  @media (max-width:430px){
+    .hero-frame{ padding:54px 16px; }
+    .corner{ width:20px; height:20px; }
+    .hero-title{ margin-bottom:18px; }
+    .hero-divider{ margin-bottom:20px; }
+    .logo-mark{ font-size:1.35rem; }
+    .nav-cta{ font-size:0.78rem; padding:4px 11px !important; }
+    .header-actions{ gap:8px; }
+    .icon-link{ width:30px; height:30px; }
+  }
+
+  /* ---------- section shell ---------- */
+  section{ padding:120px 0; position:relative; scroll-margin-top:92px; }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 64px; }
+  .section-head h2{ font-size:clamp(2.1rem, 4.4vw, 3rem); margin-bottom:18px; }
+  .section-head p{ color:var(--muted); font-size:0.98rem; }
+  .section-divider{ width:50px; height:1px; background:var(--gold-dim); margin:18px auto 0; }
+
+  /* ---------- storia ---------- */
+  .storia{ background:var(--bg-panel); position:relative; overflow:hidden; }
+  .storia::before{
+    content:'Pasta Madre'; position:absolute; top:50%; left:50%; z-index:0;
+    transform:translate(-50%,-50%); white-space:nowrap; pointer-events:none;
+    font-family:var(--script); font-style:normal; font-weight:700;
+    font-size:min(24vw, 280px); color:rgba(201,162,78,0.05);
+  }
+  .storia-grid{ position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .storia-text h2{ font-size:clamp(2.2rem, 4.5vw, 3.1rem); margin-bottom:24px; text-align:left; }
+  .storia-text p{ color:var(--cream); opacity:0.9; margin-bottom:18px; max-width:52ch; }
+  .storia-text p:last-child{ margin-bottom:0; }
+  .storia-text .accent{ color:var(--gold-light); font-family:var(--serif); font-style:italic; }
+  .storia-text-center{
+    position:relative; z-index:1; max-width:680px; margin:0 auto; text-align:center;
+  }
+  .storia-text-center h2{ text-align:center; }
+  .storia-text-center p{ max-width:none; margin-left:auto; margin-right:auto; }
+  .avpn-seal{ margin-top:36px; display:flex; justify-content:center; }
+  .avpn-seal img{ width:108px; height:108px; filter:drop-shadow(0 8px 20px rgba(0,0,0,0.5)); }
+  .storia-art{ display:flex; align-items:center; justify-content:center; position:relative; }
+  .storia-photo{
+    position:relative; width:100%; max-width:380px; aspect-ratio:4/5;
+    border:1px solid var(--line); padding:10px; background:var(--bg-panel-2);
+  }
+  .storia-photo .ph-inner{ width:100%; height:100%; overflow:hidden; position:relative; }
+  .storia-photo img{ width:100%; height:100%; object-fit:cover; filter:saturate(1.05) contrast(1.04); }
+  .storia-photo .ph-inner::after{ content:''; position:absolute; inset:0; box-shadow:inset 0 0 50px rgba(0,0,0,0.45); }
+  .storia-photo .ph-tag{
+    position:absolute; bottom:-14px; right:-14px; background:var(--gold); color:#1a1509;
+    font-family:var(--sans); font-size:0.72rem; font-weight:600; letter-spacing:0.04em;
+    padding:9px 16px;
+  }
+
+  @media (max-width:880px){
+    .storia-grid{ grid-template-columns:1fr; gap:48px; text-align:center; }
+    .storia-text h2, .storia-text p{ text-align:center; margin-left:auto; margin-right:auto; }
+    .storia-art{ order:-1; }
+    .storia-photo{ max-width:260px; }
+  }
+
+  /* ---------- gallery ---------- */
+  .gallery-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:22px;
+    max-width:980px; margin:0 auto;
+  }
+  .gallery-item{
+    position:relative; border:1px solid var(--line); padding:8px;
+    background:var(--bg-panel-2); transition:border-color .25s, transform .3s ease;
+    cursor:pointer;
+  }
+  .gallery-item:hover{ border-color:var(--gold-dim); transform:translateY(-4px); }
+  .gallery-img-wrap{ overflow:hidden; position:relative; }
+  .gallery-img-wrap::after{
+    content:''; position:absolute; inset:0; background:rgba(12,10,8,0.12);
+    transition:background .3s ease; pointer-events:none;
+  }
+  .gallery-item:hover .gallery-img-wrap::after{ background:rgba(12,10,8,0); }
+  .gallery-item img{
+    width:100%; aspect-ratio:4/5; object-fit:cover; display:block;
+    transition:transform .6s cubic-bezier(.2,.7,.2,1);
+  }
+  .gallery-item:hover img{ transform:scale(1.07); }
+  .gallery-item figcaption{
+    font-family:var(--serif); font-style:italic; font-weight:500; color:var(--gold-light);
+    text-align:center; font-size:0.95rem; padding-top:12px; padding-bottom:4px;
+  }
+  @media (max-width:880px){ .gallery-grid{ grid-template-columns:repeat(2, 1fr); } }
+  @media (max-width:520px){ .gallery-grid{ grid-template-columns:1fr; max-width:360px; } }
+
+  /* ---------- lightbox ---------- */
+  .lightbox{
+    position:fixed; inset:0; z-index:500; background:rgba(6,5,4,0.95);
+    display:flex; align-items:center; justify-content:center; padding:60px 24px;
+    opacity:0; pointer-events:none; transition:opacity .3s ease;
+  }
+  .lightbox.open{ opacity:1; pointer-events:auto; }
+  .lightbox figure{ max-width:600px; width:100%; }
+  .lightbox img{ width:100%; max-height:70vh; object-fit:contain; border:1px solid var(--line); background:#000; }
+  .lightbox figcaption{ text-align:center; margin-top:20px; font-family:var(--serif); font-style:italic; color:var(--gold-light); font-size:1.3rem; }
+  .lightbox-close, .lightbox-nav{
+    position:absolute; background:none; border:1px solid var(--line); color:var(--cream);
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:border-color .2s, color .2s;
+  }
+  .lightbox-close:hover, .lightbox-nav:hover{ border-color:var(--gold-light); color:var(--gold-light); }
+  .lightbox-close{ top:26px; right:28px; width:42px; height:42px; border-radius:50%; font-size:1.4rem; }
+  .lightbox-nav{ top:50%; transform:translateY(-50%); width:50px; height:50px; border-radius:50%; font-size:1.6rem; }
+  .lightbox-nav.prev{ left:24px; } .lightbox-nav.next{ right:24px; }
+  @media (max-width:640px){
+    .lightbox-nav{ width:38px; height:38px; font-size:1.2rem; }
+    .lightbox-nav.prev{ left:8px; } .lightbox-nav.next{ right:8px; }
+    .lightbox-close{ width:36px; height:36px; top:14px; right:14px; }
+  }
+
+  /* ---------- pranzo banner (sempre visibile, fuori dai tab) ---------- */
+  .pranzo-banner{
+    max-width:820px; margin:0 auto 56px; position:relative;
+    border:1px solid var(--gold-dim); border-radius:6px; overflow:hidden;
+    background:linear-gradient(135deg, rgba(201,162,78,0.09), rgba(201,162,78,0.015) 60%);
+    padding:34px 36px 30px;
+  }
+  .pranzo-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--sans); font-size:0.72rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase;
+    color:var(--gold); background:rgba(201,162,78,0.12); border:1px solid var(--gold-dim);
+    padding:6px 14px; border-radius:20px; margin-bottom:22px;
+  }
+  .pranzo-badge svg{ width:14px; height:14px; }
+  .pranzo-items{ display:flex; gap:0; }
+  .pranzo-item{ flex:1; }
+  .pranzo-item-top{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:6px; }
+  .pranzo-item-top h3{ font-size:1.15rem; }
+  .pranzo-item p{ font-size:0.86rem; color:var(--muted); }
+  .pranzo-sep{ width:1px; background:var(--line); margin:0 32px; flex-shrink:0; }
+
+  @media (max-width:640px){
+    .pranzo-banner{ padding:26px 22px 22px; }
+    .pranzo-items{ flex-direction:column; gap:22px; }
+    .pranzo-sep{ display:none; }
+  }
+
+  /* ---------- menu ---------- */
+  .menu-tabs{
+    display:flex; gap:10px; flex-wrap:wrap; justify-content:center;
+    margin-bottom:56px; border-bottom:1px solid var(--line); padding-bottom:26px;
+  }
+  .menu-tab{
+    display:inline-flex; align-items:center; gap:8px;
+    background:none; border:1px solid transparent; color:var(--muted);
+    font-family:var(--sans); font-size:0.82rem; letter-spacing:0.03em;
+    padding:10px 18px; border-radius:20px; cursor:pointer; transition:all .2s;
+  }
+  .menu-tab svg{ width:15px; height:15px; flex-shrink:0; opacity:0.85; }
+  .menu-tab:hover{ color:var(--cream); }
+  .menu-tab.active{ color:var(--gold-light); border-color:var(--gold-dim); background:rgba(201,162,78,0.08); }
+
+  .menu-panel{ display:none; }
+  .menu-panel.active{ display:block; animation:panelIn .4s ease; }
+  @keyframes panelIn{ from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:translateY(0);} }
+
+  .menu-note{ text-align:center; color:var(--muted); font-size:0.88rem; font-style:italic; font-family:var(--serif); margin-bottom:44px; }
+
+  .menu-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 60px; max-width:980px; margin:0 auto; }
+  .menu-item{ padding:22px 0; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .menu-item-top{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; margin-bottom:6px; }
+  .menu-item-top h3{ font-size:1.2rem; }
+  .menu-price{ font-family:var(--sans); font-size:0.95rem; font-weight:600; color:var(--gold); white-space:nowrap; }
+  .menu-item p{ font-size:0.84rem; color:var(--muted); line-height:1.55; }
+
+  .menu-single-col .menu-grid{ grid-template-columns:1fr; max-width:640px; }
+
+  .menu-cta-line{
+    text-align:center; margin-top:10px; padding:26px 24px; border:1px dashed var(--gold-dim);
+    border-radius:4px; max-width:640px; margin-left:auto; margin-right:auto;
+  }
+  .menu-cta-line h3{ font-size:1.05rem; margin-bottom:6px; }
+  .menu-cta-line span{ color:var(--gold); font-weight:600; font-family:var(--sans); font-size:0.92rem; }
+
+  @media (max-width:700px){
+    .menu-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- dove siamo ---------- */
+  .dove{ background:var(--bg-panel); }
+  .dove-grid{ display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:stretch; }
+  .dove-info{ display:flex; flex-direction:column; justify-content:center; gap:28px; }
+  .dove-item{ display:flex; gap:16px; align-items:flex-start; }
+  .dove-item .ic{ flex-shrink:0; width:38px; height:38px; border:1px solid var(--gold-dim); border-radius:50%; display:flex; align-items:center; justify-content:center; color:var(--gold-light); }
+  .dove-item .ic svg{ width:17px; height:17px; }
+  .dove-item h4{ font-family:var(--sans); font-size:0.78rem; letter-spacing:0.08em; color:var(--muted); margin-bottom:4px; text-transform:uppercase; }
+  .dove-item p, .dove-item a{ font-size:1rem; color:var(--cream); }
+  .dove-item a:hover{ color:var(--gold-light); }
+  .dove-row{ display:flex; gap:24px; }
+  .dove-row .dove-item{ flex:1; min-width:0; }
+  .wa-contacts{ display:flex; flex-direction:column; gap:2px; }
+  @media (max-width:480px){ .dove-row{ flex-direction:column; gap:24px; } }
+  .map-wrap{ border:1px solid var(--line); border-radius:4px; overflow:hidden; min-height:340px; position:relative; }
+  .map-wrap iframe{ width:100%; height:100%; min-height:340px; border:0; filter:grayscale(0.3) contrast(1.05); }
+  .map-link{ display:inline-block; margin-top:14px; font-size:0.82rem; color:var(--gold-light); border-bottom:1px solid var(--gold-dim); }
+
+  @media (max-width:880px){
+    .dove-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- contatti / cta finale ---------- */
+  .cta-final{ text-align:center; }
+  .cta-final h2{ font-size:clamp(2.4rem, 6vw, 3.6rem); margin-bottom:22px; }
+  .cta-final p{ color:var(--muted); max-width:480px; margin:0 auto 40px; }
+  .cta-final .hero-cta{ margin-bottom:0; }
+
+  /* ---------- footer ---------- */
+  footer{
+    position:relative; overflow:hidden;
+    background:#080705; border-top:1px solid var(--line); padding:76px 0 32px;
+  }
+  footer::before{
+    content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%);
+    width:600px; height:300px; pointer-events:none;
+    background:radial-gradient(ellipse, rgba(201,162,78,0.06) 0%, transparent 70%);
+  }
+  .footer-grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.3fr 0.9fr 1fr; gap:40px; margin-bottom:44px;
+  }
+  .footer-brand .logo-mark{ display:block; margin-bottom:14px; font-size:2.4rem; }
+  .footer-brand p{ color:var(--muted); font-size:0.86rem; max-width:280px; }
+  .footer-col h5{
+    font-family:var(--sans); font-size:0.74rem; letter-spacing:0.12em; color:var(--gold);
+    text-transform:uppercase; margin-bottom:18px; padding-bottom:12px;
+    border-bottom:1px solid var(--line);
+  }
+  .footer-col a, .footer-col p{ display:flex; align-items:center; gap:9px; font-size:0.88rem; color:var(--cream); opacity:0.85; margin-bottom:12px; transition:opacity .2s, color .2s; }
+  .footer-col a:hover{ opacity:1; color:var(--gold-light); }
+  .footer-col a svg{ flex-shrink:0; width:14px; height:14px; opacity:0.7; color:var(--gold); }
+  .footer-social{ display:flex; gap:18px; margin-top:6px; }
+  .footer-icon{ color:var(--gold); opacity:0.85; transition:opacity .2s, color .2s, transform .2s; }
+  .footer-icon:hover{ opacity:1; color:var(--gold-light); transform:translateY(-2px); }
+  .footer-bottom{
+    position:relative; z-index:1;
+    border-top:1px solid var(--line); padding-top:24px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    font-size:0.76rem; color:var(--muted);
+  }
+  .back-to-top{ color:var(--gold); opacity:0.85; transition:opacity .2s; }
+  .back-to-top:hover{ opacity:1; }
+
+  @media (max-width:760px){
+    .footer-grid{ grid-template-columns:1fr; text-align:center; gap:44px; }
+    .footer-brand p{ margin:0 auto; }
+    .footer-col h5{ margin-top:0; }
+    .footer-col a, .footer-col p{ justify-content:center; }
+    .footer-social{ justify-content:center; }
+  }
+
+  @media (max-width:600px){
+    section{ padding:80px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="#" class="logo-mark">Pasta Madre</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="#chi-siamo">Chi siamo</a>
+      <a href="#gallery">Le pizze</a>
+      <a href="#menu">Menù</a>
+      <a href="#dove">Informazioni</a>
+    </nav>
+    <div class="header-actions">
+      <a href="#contatti" class="nav-cta">Contattaci!</a>
+      <a href="tel:+390331350015" class="phone-chip">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        0331 1350015
+      </a>
+      <a href="#dove" class="icon-link" id="headerWaBtn" aria-label="Vai alle informazioni di contatto">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="4" width="16" height="12" rx="4"/><path d="M10 16l2 4 2-4Z" stroke="none" fill="currentColor"/></svg>
+      </a>
+      <a href="https://www.instagram.com/_pasta.madre_/" target="_blank" rel="noopener" class="icon-link" aria-label="Instagram Pasta Madre">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="4"/></svg>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-label="Apri il menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <img src="imagesPM/margherita.jpg" alt="">
+    <img src="imagesPM/testa_di_zucca.jpg" alt="">
+    <img src="imagesPM/crudo_e_fichi.jpg" alt="">
+    <img src="imagesPM/diavola.jpg" alt="">
+  </div>
+  <div class="hero-frame">
+    <span class="corner tl"></span><span class="corner tr"></span>
+    <span class="corner bl"></span><span class="corner br"></span>
+    <h1 class="hero-title">Pasta Madre</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">PIZZERIA NAPOLETANA</p>
+    <p class="hero-tagline">Impasto a lunga lievitazione, lievito madre curato ogni giorno, ingredienti DOP. La pizza napoletana come dovrebbe essere, a Fagnano Olona.</p>
+    <div class="hero-cta">
+      <a href="#menu" class="btn btn-solid">Guarda il menù</a>
+      <a href="https://www.instagram.com/_pasta.madre_/" target="_blank" rel="noopener" class="btn btn-outline">Seguici su Instagram</a>
+    </div>
+  </div>
+  <span class="scroll-cue">SCORRI</span>
+</section>
+
+<!-- ============ STORIA ============ -->
+<section class="storia" id="chi-siamo">
+  <div class="wrap">
+    <div class="storia-text storia-text-center reveal">
+      <h2>L'arte della vera<br>pizza napoletana.</h2>
+      <p>A Fagnano Olona la passione partenopea si sente ancora prima di accomodarsi: un sorriso sincero, l'accoglienza spontanea della nostra terra, il profumo del forno a legna. Da noi ogni cliente è un ospite d'onore, ogni cena una festa in famiglia.</p>
+      <p>Siamo una pizzeria d'asporto e posti a sedere aperti 7 giorni su 7.</p>
+      <p>Vieni a riscoprire il gusto autentico della tradizione napoletana, fatta con cura artigianale e servita col cuore. Ti aspettiamo a tavola.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERY ============ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Le nostre pizze</h2>
+      <p>Sfornate ogni giorno, dal forno alla tavola.</p>
+      <div class="section-divider"></div>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <figure class="gallery-item" data-caption="Margherita"><div class="gallery-img-wrap"><img src="imagesPM/margherita.jpg" alt="Margherita"></div><figcaption>Margherita</figcaption></figure>
+      <figure class="gallery-item" data-caption="Diavola"><div class="gallery-img-wrap"><img src="imagesPM/diavola.jpg" alt="Diavola"></div><figcaption>Diavola</figcaption></figure>
+      <figure class="gallery-item" data-caption="Crudo e Fichi"><div class="gallery-img-wrap"><img src="imagesPM/crudo_e_fichi.jpg" alt="Crudo e Fichi"></div><figcaption>Crudo e Fichi</figcaption></figure>
+      <figure class="gallery-item" data-caption="Testa di Zucca"><div class="gallery-img-wrap"><img src="imagesPM/testa_di_zucca.jpg" alt="Testa di Zucca"></div><figcaption>Testa di Zucca</figcaption></figure>
+      <figure class="gallery-item" data-caption="La Salmone"><div class="gallery-img-wrap"><img src="imagesPM/salmone.jpg" alt="La Salmone"></div><figcaption>La Salmone</figcaption></figure>
+      <figure class="gallery-item" data-caption="Spaccanapoli"><div class="gallery-img-wrap"><img src="imagesPM/spaccanapoli.jpg" alt="Spaccanapoli"></div><figcaption>Spaccanapoli</figcaption></figure>
+      <figure class="gallery-item" data-caption="Ti Pesto di Pistacchio"><div class="gallery-img-wrap"><img src="imagesPM/pesto_pistacchio.jpg" alt="Ti Pesto di Pistacchio"></div><figcaption>Ti Pesto di Pistacchio</figcaption></figure>
+      <figure class="gallery-item" data-caption="Crudo e Stracciatella"><div class="gallery-img-wrap"><img src="imagesPM/crudoestracciatella.jpg" alt="Crudo e Stracciatella"></div><figcaption>Crudo e Stracciatella</figcaption></figure>
+      <figure class="gallery-item" data-caption="Tonno e Cipolle secondo Pasta Madre"><div class="gallery-img-wrap"><img src="imagesPM/tonno_cipolle_secondo.jpg" alt="Tonno e Cipolle secondo Pasta Madre"></div><figcaption>Tonno e Cipolle secondo Pasta Madre</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENU ============ -->
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Il nostro menù</h2>
+      <p>Pizze, calzoni, panuozzi e dolci — tutto lievitato a lungo, tutto fatto ogni giorno.</p>
+      <div class="section-divider"></div>
+    </div>
+
+    <div class="pranzo-banner reveal">
+      <span class="pranzo-badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>Menù Pranzo</span>
+      <div class="pranzo-items">
+        <div class="pranzo-item">
+          <div class="pranzo-item-top"><h3>Menù Pranzo</h3><span class="menu-price">€ 11,00</span></div>
+          <p>Una pizza classica, bibita e caffè</p>
+        </div>
+        <div class="pranzo-sep"></div>
+        <div class="pranzo-item">
+          <div class="pranzo-item-top"><h3>Menù Pranzo con Birra</h3><span class="menu-price">€ 12,00</span></div>
+          <p>Una pizza classica, birra e caffè</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-tabs" id="menuTabs">
+      <button class="menu-tab active" data-target="classiche"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 9.5 12 4l10 5.5-10 5.5L2 9.5Z"/><path d="M6 12l6 3.3 6-3.3M2 9.5V15M22 9.5V15"/></svg>Pizze Classiche</button>
+      <button class="menu-tab" data-target="gourmet"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2.5 14.7 9l6.8.6-5.2 4.5 1.6 6.6L12 17.3 5.9 20.7l1.6-6.6L2.3 9.6 9.1 9 12 2.5Z"/></svg>Pizze Gourmet</button>
+      <button class="menu-tab" data-target="fritte"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c2 2.5-1 3.5-1 6a3 3 0 0 0 6 0c0-1-.5-1.8-1-2.5.6 3.5-1.5 3.6-1.5 6a3.5 3.5 0 0 1-7 0c0-3 2.5-4 2.5-6.5 0-1-.3-2-2-3 1.5.3 3 .8 4 0Z"/><path d="M6 17a6 6 0 0 0 12 0Z"/></svg>Pizze Fritte</button>
+      <button class="menu-tab" data-target="calzoni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 12a9 9 0 0 1 18 0Z"/><path d="M8 12c.5-2 1.5-3 2-2s-1 2.5-.5 3.5M13 12c.5-1.5 1.7-2.4 2.2-1.6s-.7 2-.4 3"/></svg>Calzoni</button>
+      <button class="menu-tab" data-target="panuozzi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 15c0-4 3.5-8 8-8s8 4 8 8-3 3-8 3-8 1-8-3Z"/><path d="M8 11.5c1-1 2-1.4 2.7-.7M13 10.8c1-.9 1.9-1.2 2.6-.6"/></svg>Panuozzi</button>
+      <button class="menu-tab" data-target="dolci"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v3M9 4.5 10 6M15 4.5 14 6"/><path d="M5 10h14l-1.3 9.1a2 2 0 0 1-2 1.9H8.3a2 2 0 0 1-2-1.9L5 10Z"/><path d="M5 10a7 7 0 0 1 14 0"/></svg>Dolci</button>
+      <button class="menu-tab" data-target="vini"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 3h10l-1 8a4 4 0 0 1-8 0L7 3Z"/><path d="M12 15v6M8.5 21h7"/></svg>Vini</button>
+      <button class="menu-tab" data-target="bevande"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 3h12l-1.4 15.2A2 2 0 0 1 14.6 20H9.4a2 2 0 0 1-2-1.8L6 3Z"/><path d="M5.3 8h13.4"/></svg>Bevande</button>
+    </div>
+
+    <!-- Pizze Classiche -->
+    <div class="menu-panel active" id="panel-classiche">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-top"><h3>Margherita</h3><span class="menu-price">€ 7,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Marinara</h3><span class="menu-price">€ 6,00</span></div><p>Pomodoro San Marzano DOP, aglio rosso, origano, olio EVO, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Bufalina</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano DOP, bufala DOP, olio EVO, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Cotto</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Cotto e Funghi</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, funghi champignon freschi, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Diavola</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, salame calabro DOP, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Napoli</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, acciughe di Cetara, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Americana</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola DOP, würstel, patatine fritte, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Quattro Formaggi</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola DOP, provola affumicata di Agerola, gorgonzola DOP, emmental, fontina, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Quattro Stagioni</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, funghi champignon freschi, carciofi, olive, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Salsiccia e Friarielli</h3><span class="menu-price">€ 10,00</span></div><p>Provola, salsiccia a punta di coltello, friarielli, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Spaccanapoli</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, acciughe di Cetara, capperi, olive taggiasche, pomodorini freschi, origano, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Tonno e Cipolle</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, tonno, cipolla rossa di Tropea, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Vegetariana</h3><span class="menu-price">€ 10,00</span></div><p>Fiordilatte di Agerola DOP, peperoni, zucchine, pomodori, melanzane</p></div>
+      </div>
+      <div class="menu-cta-line"><h3>Crea la tua pizza</h3><p>Base rossa — <span>€ 6,00</span></p></div>
+    </div>
+
+    <!-- Pizze Gourmet -->
+    <div class="menu-panel" id="panel-gourmet">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-top"><h3>Crudo e Fichi</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola DOP, burrata pugliese DOP, crudo di Parma 24 mesi DOP, fichi di stagione o marmellata di fichi, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Crudo e Stracciatella</h3><span class="menu-price">€ 13,00</span></div><p>Pomodoro San Marzano DOP, rucola, crudo di Parma 24 mesi DOP, pomodorini freschi, stracciatella pugliese DOP, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>La Pesto</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola DOP, bufala DOP, pesto genovese, pomodorini, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>La Salmone</h3><span class="menu-price">€ 13,00</span></div><p>Fiordilatte di Agerola DOP, salmone norvegese, erba cipollina, avocado, burrata pugliese DOP, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Testa di Zucca</h3><span class="menu-price">€ 13,00</span></div><p>Crema di zucca, burrata pugliese DOP, pancetta croccante, noci, timo, erba cipollina, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Pasta Madre</h3><span class="menu-price">€ 13,00</span></div><p>Fiordilatte di Agerola DOP, peperoni al forno, lardo di Colonnata, pomodorini freschi, burrata pugliese DOP, erba cipollina, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Ti Pesto di Pistacchio</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola DOP, mortadella, stracciatella pugliese DOP, crema di pistacchio, granella di pistacchio, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Tonno e Cipolle secondo Pasta Madre</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte, cipolla rossa, tonno, bufala DOP, pomodorini freschi, basilico fresco</p></div>
+      </div>
+    </div>
+
+    <!-- Pizze Fritte -->
+    <div class="menu-panel" id="panel-fritte">
+      <p class="menu-note">Le nostre pizze fritte, cotte due volte: prima nell'olio, poi al forno.</p>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-top"><h3>Ripassata</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola DOP</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>La Zozza</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola DOP, salame Napoli</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Cotto e Funghi</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, funghi champignon freschi</p></div>
+      </div>
+    </div>
+
+    <!-- Calzoni -->
+    <div class="menu-panel" id="panel-calzoni">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-top"><h3>Tradizionale</h3><span class="menu-price">€ 7,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Farcito</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, funghi champignon freschi</p></div>
+      </div>
+      <div class="menu-cta-line"><h3>Crea il tuo calzone</h3><p>Base — <span>€ 6,00</span></p></div>
+    </div>
+
+    <!-- Panuozzi -->
+    <div class="menu-panel" id="panel-panuozzi">
+      <p class="menu-note">Il panuozzo di Pasta Madre nasce dal nostro impasto, cotto al forno e farcito come preferisci.</p>
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-top"><h3>A Casa</h3><span class="menu-price">€ 8,00</span></div><p>Fiordilatte di Agerola DOP, prosciutto cotto Rovagnati</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Parma</h3><span class="menu-price">€ 10,00</span></div><p>Fiordilatte di Agerola DOP, prosciutto crudo di Parma 24 mesi DOP, rucola</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Napoletano</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola DOP, salsiccia a punta di coltello, friarielli</p></div>
+      </div>
+      <div class="menu-cta-line"><h3>Crea il tuo panuozzo</h3><p>Base — <span>€ 6,00</span></p></div>
+    </div>
+
+    <!-- Dolci -->
+    <div class="menu-panel menu-single-col" id="panel-dolci">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-top"><h3>Tiramisù</h3><span class="menu-price">€ 6,00</span></div></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Panna Cotta</h3><span class="menu-price">€ 5,00</span></div></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Sfogliatelle alla Nutella</h3><span class="menu-price">€ 4,00</span></div></div>
+      </div>
+    </div>
+
+    <!-- Vini -->
+    <div class="menu-panel menu-single-col" id="panel-vini">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-top"><h3>Calice di vino</h3><span class="menu-price">€ 5,00</span></div></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Selezione bottiglie</h3><span class="menu-price">€ 15 · 25 · 30 · 50</span></div></div>
+      </div>
+    </div>
+
+    <!-- Bevande -->
+    <div class="menu-panel menu-single-col" id="panel-bevande">
+      <div class="menu-grid">
+        <div class="menu-item"><div class="menu-item-top"><h3>Acqua</h3><span class="menu-price">€ 1,00</span></div></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Bibite in lattina</h3><span class="menu-price">€ 2,50</span></div></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Red Bull</h3><span class="menu-price">€ 3,00</span></div></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Birra 33 cl</h3><span class="menu-price">€ 3,50</span></div></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Birra 66 cl</h3><span class="menu-price">€ 4,50</span></div></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Corona</h3><span class="menu-price">€ 4,00</span></div></div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ============ DOVE SIAMO ============ -->
+<section class="dove" id="dove">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <h2>Informazioni</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="dove-grid">
+      <div class="dove-info">
+        <div class="dove-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+          <div>
+            <h4>Indirizzo</h4>
+            <a href="https://www.google.com/maps/search/?api=1&query=Via+Guglielmo+Marconi+28+Fagnano+Olona" target="_blank" rel="noopener">Via Guglielmo Marconi 28, Fagnano Olona (VA)</a>
+          </div>
+        </div>
+        <div class="dove-row" id="whatsapp-contact" style="scroll-margin-top:92px;">
+          <div class="dove-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <div>
+              <h4>Telefono</h4>
+              <a href="tel:+390331350015">0331 1350015</a>
+            </div>
+          </div>
+          <div class="dove-item">
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="12" rx="4"/><path d="M10 16l2 4 2-4Z" stroke="none" fill="currentColor"/></svg></span>
+            <div>
+              <h4>WhatsApp</h4>
+              <div class="wa-contacts">
+                <a href="https://wa.me/393514801855" target="_blank" rel="noopener">3514801855</a>
+                <a href="https://wa.me/393483546697" target="_blank" rel="noopener">3483546697</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dove-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="4"/></svg></span>
+          <div>
+            <h4>Instagram</h4>
+            <a href="https://www.instagram.com/_pasta.madre_/" target="_blank" rel="noopener">@_pasta.madre_</a>
+          </div>
+        </div>
+        <div class="dove-item">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+          <div>
+            <h4>Orari</h4>
+            <p>Pranzo — Lunedì / Venerdì, 12:00 – 15:00<br>Cena — Tutti i giorni, 18:30 – 23:00</p>
+          </div>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Via+Guglielmo+Marconi+28,+Fagnano+Olona+VA&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Mappa: Pasta Madre, Via Guglielmo Marconi 28, Fagnano Olona"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINALE ============ -->
+<section id="contatti">
+  <div class="wrap cta-final reveal">
+    <h2>Ti aspettiamo<br>a tavola.</h2>
+    <p>Chiamaci per prenotare o passa a trovarci a Fagnano Olona.</p>
+    <div class="hero-cta">
+      <a href="tel:+390331350015" class="btn btn-solid">Contattaci</a>
+      <a href="https://www.instagram.com/_pasta.madre_/" target="_blank" rel="noopener" class="btn btn-outline">Seguici su Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="logo-mark">Pasta Madre</span>
+        <p>Pizzeria napoletana a Fagnano Olona. Impasto a lunga lievitazione, ingredienti DOP, tradizione napoletana.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Menù</h5>
+        <a href="#menu">Pizze classiche</a>
+        <a href="#menu">Pizze gourmet</a>
+        <a href="#menu">Calzoni & panuozzi</a>
+      </div>
+      <div class="footer-col">
+        <h5>Contatti & Social</h5>
+        <a href="tel:+390331350015"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0331 1350015</a>
+        <a href="https://wa.me/393514801855" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="4"/><path d="M10 16l2 4 2-4Z" stroke="none" fill="currentColor"/></svg>WhatsApp 3514801855</a>
+        <a href="https://wa.me/393483546697" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="4"/><path d="M10 16l2 4 2-4Z" stroke="none" fill="currentColor"/></svg>WhatsApp 3483546697</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Via+Guglielmo+Marconi+28+Fagnano+Olona" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Via G. Marconi 28, Fagnano Olona</a>
+        <a href="https://www.instagram.com/_pasta.madre_/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="4"/></svg>@_pasta.madre_</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Pasta Madre — Pizzeria Napoletana</span>
+      <span>Fagnano Olona (VA)</span>
+      <a href="#" class="back-to-top">Torna su ↑</a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Chiudi">&times;</button>
+  <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Foto precedente">&#8249;</button>
+  <button class="lightbox-nav next" id="lightboxNext" aria-label="Foto successiva">&#8250;</button>
+  <figure>
+    <img id="lightboxImg" src="" alt="">
+    <figcaption id="lightboxCaption"></figcaption>
+  </figure>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  navToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+  });
+
+  function goToSection(href, extraDelay) {
+    const target = document.querySelector(href);
+    if (!target) return false;
+    setTimeout(() => {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, extraDelay || 0);
+    return true;
+  }
+
+  mainNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const href = a.getAttribute('href');
+      const isOpen = mainNav.classList.contains('open');
+      if (href && href.startsWith('#') && href.length > 1) {
+        e.preventDefault();
+        mainNav.classList.remove('open');
+        goToSection(href, isOpen ? 320 : 0);
+        return;
+      }
+      mainNav.classList.remove('open');
+    });
+  });
+
+  const headerWaBtn = document.getElementById('headerWaBtn');
+  if (headerWaBtn) {
+    headerWaBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      goToSection(headerWaBtn.getAttribute('href'));
+    });
+  }
+
+  // menu tabs
+  const tabs = document.querySelectorAll('.menu-tab');
+  const panels = document.querySelectorAll('.menu-panel');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('panel-' + tab.dataset.target).classList.add('active');
+    });
+  });
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // gallery lightbox
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  let currentIndex = 0;
+
+  function openLightbox(index) {
+    currentIndex = index;
+    const item = galleryItems[currentIndex];
+    lightboxImg.src = item.querySelector('img').src;
+    lightboxCaption.textContent = item.dataset.caption;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+  }
+  function showNext(dir) {
+    currentIndex = (currentIndex + dir + galleryItems.length) % galleryItems.length;
+    const item = galleryItems[currentIndex];
+    lightboxImg.src = item.querySelector('img').src;
+    lightboxCaption.textContent = item.dataset.caption;
+  }
+
+  galleryItems.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+  document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
+  document.getElementById('lightboxPrev').addEventListener('click', () => showNext(-1));
+  document.getElementById('lightboxNext').addEventListener('click', () => showNext(1));
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowRight') showNext(1);
+    if (e.key === 'ArrowLeft') showNext(-1);
+  });
+</script>
+
+</body>
+</html>
