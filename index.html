@@ -450,6 +450,34 @@
   @media (max-width:600px){
     section{ padding:80px 0; }
   }
+
+  /* ---------- avviso telefono fisso ---------- */
+  .landline-tag{ display:inline-block; margin-top:6px; font-size:0.68rem; letter-spacing:0.06em; text-transform:uppercase; color:#e8a58f; border:1px solid rgba(232,165,143,0.4); border-radius:20px; padding:3px 10px; }
+  .phone-modal{ position:fixed; inset:0; z-index:600; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(5,4,3,0.84); opacity:0; visibility:hidden; transition:opacity .35s ease, visibility .35s ease; }
+  .phone-modal.open{ opacity:1; visibility:visible; }
+  .phone-modal-card{ position:relative; overflow:hidden; width:100%; max-width:420px; text-align:center; background:linear-gradient(160deg,#1c1711 0%,#0c0a08 100%); border:1px solid var(--gold-dim); border-radius:10px; padding:42px 30px 30px; box-shadow:0 30px 80px rgba(0,0,0,0.65); transform:translateY(28px) scale(.92); opacity:0; transition:transform .55s cubic-bezier(.2,.9,.25,1.15), opacity .4s ease; }
+  .phone-modal.open .phone-modal-card{ transform:none; opacity:1; }
+  .phone-modal-card::before{ content:''; position:absolute; top:0; left:-60%; width:60%; height:2px; background:linear-gradient(90deg,transparent,var(--gold-light),transparent); animation:pmShine 3.2s ease-in-out infinite; }
+  @keyframes pmShine{ 0%{ left:-60%; } 55%,100%{ left:110%; } }
+  .phone-modal-close{ position:absolute; top:12px; right:14px; width:34px; height:34px; border-radius:50%; background:none; border:1px solid var(--line); color:var(--cream); font-size:1.3rem; line-height:1; cursor:pointer; transition:border-color .2s, color .2s, transform .2s; }
+  .phone-modal-close:hover{ border-color:var(--gold-light); color:var(--gold-light); transform:rotate(90deg); }
+  .phone-modal-icon{ position:relative; width:66px; height:66px; margin:0 auto 18px; border-radius:50%; border:1px solid var(--gold-dim); display:flex; align-items:center; justify-content:center; color:var(--gold-light); }
+  .phone-modal-icon svg{ width:26px; height:26px; animation:pmShake 2.6s ease-in-out infinite; }
+  .phone-modal-icon::after{ content:''; position:absolute; inset:-1px; border-radius:50%; border:1px solid var(--gold); animation:pmPulse 2.6s ease-out infinite; }
+  @keyframes pmShake{ 0%,62%,100%{ transform:rotate(0); } 66%{ transform:rotate(-14deg); } 71%{ transform:rotate(12deg); } 76%{ transform:rotate(-9deg); } 81%{ transform:rotate(6deg); } 86%{ transform:rotate(-3deg); } 90%{ transform:rotate(0); } }
+  @keyframes pmPulse{ 0%{ transform:scale(1); opacity:.7; } 100%{ transform:scale(1.75); opacity:0; } }
+  .phone-modal-eyebrow{ display:block; font-size:0.7rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .phone-modal-card h3{ font-size:1.5rem; margin-bottom:12px; }
+  .phone-modal-card p{ color:var(--muted); font-size:0.92rem; }
+  .phone-modal-actions{ display:flex; flex-direction:column; gap:10px; margin:22px 0 16px; }
+  .phone-modal-actions .btn{ justify-content:center; font-size:0.95rem; letter-spacing:0.04em; }
+  .phone-modal-actions .btn svg{ width:16px; height:16px; }
+  .phone-modal.open .phone-modal-actions .btn{ animation:pmUp .5s ease both; }
+  .phone-modal.open .phone-modal-actions .btn:nth-child(1){ animation-delay:.25s; }
+  .phone-modal.open .phone-modal-actions .btn:nth-child(2){ animation-delay:.38s; }
+  @keyframes pmUp{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+  .phone-modal-note{ font-family:var(--serif); font-style:italic; font-size:0.85rem !important; }
+  @media (prefers-reduced-motion:reduce){ .phone-modal-card,.phone-modal-card::before,.phone-modal-icon svg,.phone-modal-icon::after,.phone-modal.open .phone-modal-actions .btn{ animation:none; transition:none; } }
 </style>
 </head>
 <body>
@@ -465,7 +493,7 @@
     </nav>
     <div class="header-actions">
       <a href="#contatti" class="nav-cta">Contattaci!</a>
-      <a href="tel:03311350015" class="phone-chip">
+      <a href="#avviso-telefono" class="js-landline phone-chip">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         0331 1350015
       </a>
@@ -707,7 +735,8 @@
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
             <div>
               <h4>Telefono</h4>
-              <a href="tel:03311350015">0331 1350015</a>
+              <a href="#avviso-telefono" class="js-landline">0331 1350015</a>
+              <span class="landline-tag">Momentaneamente fuori uso</span>
             </div>
           </div>
           <div class="dove-item">
@@ -767,7 +796,7 @@
     <h2>Ti aspettiamo<br>a tavola.</h2>
     <p>Chiamaci per prenotare, passa a trovarci a Fagnano Olona o ordina a domicilio.</p>
     <div class="hero-cta">
-      <a href="tel:03311350015" class="btn btn-solid">Contattaci</a>
+      <a href="#avviso-telefono" class="js-landline btn btn-solid">Contattaci</a>
       <a href="https://www.instagram.com/_pasta.madre_/" target="_blank" rel="noopener" class="btn btn-outline">Seguici su Instagram</a>
     </div>
     <div class="hero-cta cta-delivery">
@@ -792,7 +821,7 @@
       </div>
       <div class="footer-col">
         <h5>Contatti & Social</h5>
-        <a href="tel:03311350015"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0331 1350015</a>
+        <a href="#avviso-telefono" class="js-landline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>0331 1350015</a>
         <a href="https://wa.me/393514801855" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="4"/><path d="M10 16l2 4 2-4Z" stroke="none" fill="currentColor"/></svg>WhatsApp 3514801855</a>
         <a href="https://wa.me/393483546697" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="12" rx="4"/><path d="M10 16l2 4 2-4Z" stroke="none" fill="currentColor"/></svg>WhatsApp 3483546697</a>
         <a href="https://www.google.it/maps/place/Pasta+Madre/@45.6653817,8.8698753,18z/data=!4m6!3m5!1s0x4786890060784889:0x676ab65e67403490!8m2!3d45.6653817!4d8.8698753!16s%2Fg%2F11zxcr9d73" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Via G. Marconi 28, Fagnano Olona</a>
@@ -808,6 +837,21 @@
     </div>
   </div>
 </footer>
+
+<div class="phone-modal" id="avviso-telefono" role="dialog" aria-modal="true" aria-labelledby="phoneModalTitle" aria-hidden="true">
+  <div class="phone-modal-card">
+    <button class="phone-modal-close" id="phoneModalClose" aria-label="Chiudi avviso">&times;</button>
+    <div class="phone-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/><path d="M2 2l20 20"/></svg></div>
+    <span class="phone-modal-eyebrow">Avviso</span>
+    <h3 id="phoneModalTitle">Telefono fisso momentaneamente fuori uso</h3>
+    <p>Per prenotazioni e ordini chiamaci a uno di questi numeri:</p>
+    <div class="phone-modal-actions">
+      <a href="tel:3514801855" class="btn btn-solid"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>351 480 1855</a>
+      <a href="tel:3483546697" class="btn btn-outline"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>348 354 6697</a>
+    </div>
+    <p class="phone-modal-note">Ci scusiamo per il disagio.</p>
+  </div>
+</div>
 
 <div class="lightbox" id="lightbox" aria-hidden="true">
   <button class="lightbox-close" id="lightboxClose" aria-label="Chiudi">&times;</button>
@@ -921,6 +965,32 @@
     if (e.key === 'ArrowRight') showNext(1);
     if (e.key === 'ArrowLeft') showNext(-1);
   });
+
+  // avviso telefono fisso
+  const phoneModal = document.getElementById('avviso-telefono');
+  function openPhoneModal() {
+    phoneModal.classList.add('open');
+    phoneModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function closePhoneModal() {
+    phoneModal.classList.remove('open');
+    phoneModal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.js-landline').forEach(a => a.addEventListener('click', (e) => { e.preventDefault(); openPhoneModal(); }));
+  document.getElementById('phoneModalClose').addEventListener('click', closePhoneModal);
+  phoneModal.addEventListener('click', (e) => { if (e.target === phoneModal) closePhoneModal(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && phoneModal.classList.contains('open')) closePhoneModal(); });
+  // compare da solo una volta per visita
+  let pmShown = false;
+  try { pmShown = sessionStorage.getItem('pmAvvisoTelefono') === '1'; } catch (err) {}
+  if (!pmShown) {
+    setTimeout(() => {
+      openPhoneModal();
+      try { sessionStorage.setItem('pmAvvisoTelefono', '1'); } catch (err) {}
+    }, 1800);
+  }
 </script>
 
 </body>
