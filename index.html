@@ -315,20 +315,20 @@
 
   /* ---------- consegna a domicilio ---------- */
   .delivery-strip{
-    max-width:820px; margin:-32px auto 56px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
-    border:1px solid var(--line); border-radius:6px; padding:18px 24px; background:rgba(255,255,255,0.015);
+    max-width:820px; margin:-32px auto 56px; display:flex; flex-direction:column; align-items:center; gap:18px; text-align:center;
+    border:1px solid var(--line); border-radius:6px; padding:24px 24px 26px; background:rgba(255,255,255,0.015);
   }
-  .delivery-text{ display:flex; align-items:center; gap:12px; font-size:0.92rem; color:var(--cream); }
+  .delivery-text{ display:flex; align-items:center; justify-content:center; gap:12px; font-size:0.92rem; color:var(--cream); }
   .delivery-text svg{ width:26px; height:26px; color:var(--gold); flex-shrink:0; }
   .delivery-text strong{ color:var(--gold-light); font-weight:500; }
-  .delivery-btns{ display:flex; gap:10px; flex-wrap:wrap; }
-  .delivery-btns .btn{ padding:11px 22px; }
+  .delivery-btns, .cta-delivery{ display:flex; justify-content:center; gap:14px; }
+  .delivery-btns .btn, .cta-delivery .btn{ flex:0 0 220px; justify-content:center; padding:13px 20px; }
   .cta-delivery{ margin-top:14px; }
   @media (max-width:640px){
-    .delivery-strip{ flex-direction:column; text-align:center; margin-top:-36px; }
+    .delivery-strip{ margin-top:-36px; }
     .delivery-text{ flex-direction:column; }
-    .delivery-btns{ justify-content:center; width:100%; }
-    .delivery-btns .btn{ flex:1; justify-content:center; }
+    .delivery-btns, .cta-delivery{ width:100%; max-width:420px; margin-left:auto; margin-right:auto; }
+    .delivery-btns .btn, .cta-delivery .btn{ flex:1 1 0; min-width:0; }
   }
 
   /* ---------- menu ---------- */
@@ -619,20 +619,20 @@
     <!-- Pizze Classiche -->
     <div class="menu-panel active" id="panel-classiche">
       <div class="menu-grid">
-        <div class="menu-item"><div class="menu-item-top"><h3>Margherita</h3><span class="menu-price">€ 7,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Marinara</h3><span class="menu-price">€ 6,00</span></div><p>Pomodoro San Marzano DOP, aglio rosso, origano, olio EVO, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Bufalina</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano DOP, bufala DOP, olio EVO, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Cotto</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Cotto e Funghi</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, funghi champignon freschi, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Diavola</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, salame calabro DOP, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Napoli</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, acciughe di Cetara, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Americana</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola DOP, würstel, patatine fritte, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Quattro Formaggi</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola DOP, provola affumicata di Agerola, gorgonzola DOP, emmental, fontina, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Quattro Stagioni</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, funghi champignon freschi, carciofi, olive, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Margherita</h3><span class="menu-price">€ 7,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Marinara</h3><span class="menu-price">€ 6,00</span></div><p>Pomodoro San Marzano DOP, aglio rosso, origano, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Bufalina</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano DOP, Mozzarella di Bufala Campana DOP, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Cotto</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, prosciutto cotto Rovagnati, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Cotto e Funghi</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, prosciutto cotto Rovagnati, funghi champignon freschi, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Diavola</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, salame calabro piccante, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Napoli</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, acciughe di Cetara, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Americana</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola, würstel, patatine fritte, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Quattro Formaggi</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola, provola affumicata di Agerola, Gorgonzola DOP, emmental, fontina, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Quattro Stagioni</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, prosciutto cotto Rovagnati, funghi champignon freschi, carciofi, olive, basilico fresco</p></div>
         <div class="menu-item"><div class="menu-item-top"><h3>Salsiccia e Friarielli</h3><span class="menu-price">€ 10,00</span></div><p>Provola, salsiccia a punta di coltello, friarielli, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Spaccanapoli</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, acciughe di Cetara, capperi, olive taggiasche, pomodorini freschi, origano, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Tonno e Cipolle</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, tonno, cipolla rossa di Tropea, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Vegetariana</h3><span class="menu-price">€ 10,00</span></div><p>Fiordilatte di Agerola DOP, peperoni, zucchine, pomodori, melanzane</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Spaccanapoli</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, acciughe di Cetara, capperi, olive taggiasche, pomodorini freschi, origano, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Tonno e Cipolle</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, tonno, cipolla rossa di Tropea, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Vegetariana</h3><span class="menu-price">€ 10,00</span></div><p>Fiordilatte di Agerola, peperoni, zucchine, pomodori, melanzane</p></div>
       </div>
       <div class="menu-cta-line"><h3>Crea la tua pizza</h3><p>Base rossa — <span>€ 6,00</span></p></div>
     </div>
@@ -640,14 +640,14 @@
     <!-- Pizze Gourmet -->
     <div class="menu-panel" id="panel-gourmet">
       <div class="menu-grid">
-        <div class="menu-item"><div class="menu-item-top"><h3>Crudo e Fichi</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola DOP, burrata pugliese DOP, crudo di Parma 24 mesi DOP, fichi di stagione o marmellata di fichi, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Crudo e Stracciatella</h3><span class="menu-price">€ 13,00</span></div><p>Pomodoro San Marzano DOP, rucola, crudo di Parma 24 mesi DOP, pomodorini freschi, stracciatella pugliese DOP, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>La Pesto</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola DOP, bufala DOP, pesto genovese, pomodorini, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>La Salmone</h3><span class="menu-price">€ 13,00</span></div><p>Fiordilatte di Agerola DOP, salmone norvegese, erba cipollina, avocado, burrata pugliese DOP, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Testa di Zucca</h3><span class="menu-price">€ 13,00</span></div><p>Crema di zucca, burrata pugliese DOP, pancetta croccante, noci, timo, erba cipollina, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Pasta Madre</h3><span class="menu-price">€ 13,00</span></div><p>Fiordilatte di Agerola DOP, peperoni al forno, lardo di Colonnata, pomodorini freschi, burrata pugliese DOP, erba cipollina, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Ti Pesto di Pistacchio</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola DOP, mortadella, stracciatella pugliese DOP, crema di pistacchio, granella di pistacchio, basilico fresco</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Tonno e Cipolle secondo Pasta Madre</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte, cipolla rossa, tonno, bufala DOP, pomodorini freschi, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Crudo e Fichi</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola, burrata pugliese, Prosciutto di Parma DOP 24 mesi, fichi di stagione o marmellata di fichi, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Crudo e Stracciatella</h3><span class="menu-price">€ 13,00</span></div><p>Pomodoro San Marzano DOP, rucola, Prosciutto di Parma DOP 24 mesi, pomodorini freschi, stracciatella pugliese, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>La Pesto</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola, Mozzarella di Bufala Campana DOP, pesto genovese, pomodorini, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>La Salmone</h3><span class="menu-price">€ 13,00</span></div><p>Fiordilatte di Agerola, salmone norvegese, erba cipollina, avocado, burrata pugliese, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Testa di Zucca</h3><span class="menu-price">€ 13,00</span></div><p>Crema di zucca, burrata pugliese, pancetta croccante, noci, timo, erba cipollina, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Pasta Madre</h3><span class="menu-price">€ 13,00</span></div><p>Fiordilatte di Agerola, peperoni al forno, lardo di Colonnata, pomodorini freschi, burrata pugliese, erba cipollina, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Ti Pesto di Pistacchio</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte di Agerola, mortadella, stracciatella pugliese, crema di pistacchio, granella di pistacchio, basilico fresco</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Tonno e Cipolle secondo Pasta Madre</h3><span class="menu-price">€ 12,00</span></div><p>Fiordilatte, cipolla rossa, tonno, Mozzarella di Bufala Campana DOP, pomodorini freschi, basilico fresco</p></div>
       </div>
     </div>
 
@@ -655,17 +655,17 @@
     <div class="menu-panel" id="panel-fritte">
       <p class="menu-note">Le nostre pizze fritte, cotte due volte: prima nell'olio, poi al forno.</p>
       <div class="menu-grid">
-        <div class="menu-item"><div class="menu-item-top"><h3>Ripassata</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola DOP</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>La Zozza</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola DOP, salame Napoli</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Cotto e Funghi</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, funghi champignon freschi</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Ripassata</h3><span class="menu-price">€ 8,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>La Zozza</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola, salame Napoli</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Cotto e Funghi</h3><span class="menu-price">€ 10,00</span></div><p>Pomodoro San Marzano, fiordilatte di Agerola, prosciutto cotto Rovagnati, funghi champignon freschi</p></div>
       </div>
     </div>
 
     <!-- Calzoni -->
     <div class="menu-panel" id="panel-calzoni">
       <div class="menu-grid">
-        <div class="menu-item"><div class="menu-item-top"><h3>Tradizionale</h3><span class="menu-price">€ 7,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Farcito</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola DOP, prosciutto cotto Rovagnati, funghi champignon freschi</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Tradizionale</h3><span class="menu-price">€ 7,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Farcito</h3><span class="menu-price">€ 9,00</span></div><p>Pomodoro San Marzano DOP, fiordilatte di Agerola, prosciutto cotto Rovagnati, funghi champignon freschi</p></div>
       </div>
       <div class="menu-cta-line"><h3>Crea il tuo calzone</h3><p>Base — <span>€ 6,00</span></p></div>
     </div>
@@ -674,9 +674,9 @@
     <div class="menu-panel" id="panel-panuozzi">
       <p class="menu-note">Il panuozzo di Pasta Madre nasce dal nostro impasto, cotto al forno e farcito come preferisci.</p>
       <div class="menu-grid">
-        <div class="menu-item"><div class="menu-item-top"><h3>A Casa</h3><span class="menu-price">€ 8,00</span></div><p>Fiordilatte di Agerola DOP, prosciutto cotto Rovagnati</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Parma</h3><span class="menu-price">€ 10,00</span></div><p>Fiordilatte di Agerola DOP, prosciutto crudo di Parma 24 mesi DOP, rucola</p></div>
-        <div class="menu-item"><div class="menu-item-top"><h3>Napoletano</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola DOP, salsiccia a punta di coltello, friarielli</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>A Casa</h3><span class="menu-price">€ 8,00</span></div><p>Fiordilatte di Agerola, prosciutto cotto Rovagnati</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Parma</h3><span class="menu-price">€ 10,00</span></div><p>Fiordilatte di Agerola, Prosciutto di Parma DOP 24 mesi, rucola</p></div>
+        <div class="menu-item"><div class="menu-item-top"><h3>Napoletano</h3><span class="menu-price">€ 9,00</span></div><p>Fiordilatte di Agerola, salsiccia a punta di coltello, friarielli</p></div>
       </div>
       <div class="menu-cta-line"><h3>Crea il tuo panuozzo</h3><p>Base — <span>€ 6,00</span></p></div>
     </div>
